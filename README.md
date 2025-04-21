@@ -7,7 +7,8 @@ Anaconda - Python 3.7
 
 ## Algorithm:
 ### Step1:
-Read the gray and color image using imread()
+Read the gray imread()
+
 
 ### Step2:
 Print the image using imshow().
@@ -25,25 +26,50 @@ The Histogram of gray scale image and color image is shown.
 
 
 ## Program:
-```python
-# Developed By: 
-# Register Number: 
+python
+## Developed By: Gurumurthy S
+## Register Number: 212223230066
 
-
-
-
-
-
+# Input Grayscale Image
 ```
-## Output:
-### Input Grayscale Image and Color Image
+import cv2
+from matplotlib import pyplot as plt
+# Load the color image
+image = cv2.imread('image.jpg')
+# Convert the image to grayscale
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+plt.imshow(gray_image, cmap='gray')
+plt.title('Original Grayscale Image')
+plt.axis('off')
+```
+![image](https://github.com/user-attachments/assets/c6887070-48b1-4009-9b1d-187bd140944c)
 
+# Histogram of Grayscale Image
+```
+hist_original = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
+plt.plot(hist_original, color='black')
+plt.title('Original Histogram')
+plt.xlim([0, 256])
+```
+![image](https://github.com/user-attachments/assets/daa97470-9584-4b2b-a58e-4f9c7471eb48)
 
-### Histogram of Grayscale Image and any channel of Color Image
-
-
-
-### Histogram Equalization of Grayscale Image.
+# Equalization
+```
+# Apply histogram equalization
+equalized_image = cv2.equalizeHist(gray_image)
+plt.imshow(equalized_image, cmap='grey')
+plt.title('Equalized Image')
+plt.axis('off')
+```
+![image](https://github.com/user-attachments/assets/199e7481-d18a-4988-88e8-ce0c081f353c)
+# Equalized Histogram
+```
+hist_original = cv2.calcHist([equalized_image], [0], None, [256], [0, 256])
+plt.plot(hist_original, color='black')
+plt.title('Equalized Histogram')
+plt.xlim([0, 256])
+```
+![image](https://github.com/user-attachments/assets/9e308629-a821-4093-aadc-05ff635d7f54)
 
 
 
